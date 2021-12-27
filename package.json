@@ -10,6 +10,8 @@
     "build": "parcel build src/client/index.html"
   },
   "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "parcel": "^2.0.1"
   },
   "dependencies": {
