@@ -1,0 +1,19 @@
+{
+  "name": "tab-title-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hmu332233/tab-title-manager.git",
+  "author": "minung.han <hmu332233@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel src/client/index.html",
+    "build": "parcel build src/client/index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
