@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TabCard from './components/TabCard';
+
 function App() {
   return (
     <>
@@ -16,18 +18,8 @@ function App() {
       </nav>
       <section className="section">
         <div className="container is-max-desktop">
-          <div className="box">
-            I'm in a box.
-          </div>
-          <div className="box">
-            I'm in a box.
-          </div>
-          <div className="box">
-            I'm in a box.
-          </div>
-          <div className="box">
-            I'm in a box.
-          </div>
+          <TabCard />
+          <TabCard />
         </div>
       </section>
     </>
