@@ -22,7 +22,7 @@
     "jsx": "react-jsx",
     "typeRoots": ["node_modules/@types", "client/types"],
     "paths": {
-      "@shared/*": ["shared/*"]
+      // "shared/*": ["shared/*"]
     }
   },
   "include": [

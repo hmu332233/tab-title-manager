@@ -1,5 +1,5 @@
 console.log('content script loaded!');
-import { EXTENSION_ACTION } from 'shared/constants';
+import { EXTENSION_ACTION } from '../shared/constants';
 
 chrome.runtime.onMessage.addListener(message => {
   console.log(message)
