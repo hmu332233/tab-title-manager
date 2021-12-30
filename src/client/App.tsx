@@ -43,14 +43,28 @@ function App() {
 
     setTabTitles(prev => [...prev, tabTitle]);
   }
+
   const handleDeleteItemClick = (id: string) => {
     const filtered = tabTitles.filter(tabTitle => tabTitle.id !== id);
     setTabTitles(filtered);
   };
+
+  const handleUrlButtonClick = (callback: ({ url, title }: { url: string, title: string }) => void) => {
+    // utilExtension.sendMessage({
+    //   action: EXTENSION_ACTION.CHANGE_TITLE,
+    //   payload: tabTitles,
+    // });
+
+    callback({
+      url: 'https://naver.com',
+      title: '테스트입니다'
+    })
+  };
+
   return (
     <>   
       <Header />
-      <Form onSubmit={handleFormSubmit} />
+      <Form onSubmit={handleFormSubmit} onUrlButtonClick={handleUrlButtonClick} />
       <List list={tabTitles} onDeleteItemClick={handleDeleteItemClick}  />
     </>
   );

@@ -1,6 +1,6 @@
 import { EXTENSION_ACTION, SYNC_KEY } from '../shared/constants';
 
-chrome.runtime.onMessage.addListener(message => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const { action } = message;
   switch (action) {
     case EXTENSION_ACTION.CHANGE_TITLE:
