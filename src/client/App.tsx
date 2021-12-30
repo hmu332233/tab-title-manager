@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
-import { EXTENSION_ACTION } from '../shared/constants';
+import { EXTENSION_ACTION, SYNC_KEY } from '../shared/constants';
 
 import utilExtension from './utils/extension';
 
@@ -9,8 +9,6 @@ import Form from './components/Form';
 import Header from './components/Header';
 import List from './components/List';
 import useDidUpdateEffect from './hooks/useDidUpdateEffect';
-
-const SYNC_KEY = 'TAB_TITLE_MANAGER:TAB_TITLES';
 
 function App() {
   const [tabTitles, setTabTitles] = useState<Array<TabTitle>>([]);
@@ -27,7 +25,7 @@ function App() {
   }, []);
 
   useDidUpdateEffect(() => {
-    chrome.storage.sync.set({'TAB_TITLE_MANAGER:TAB_TITLES': tabTitles }, () => {
+    chrome.storage.sync.set({ [SYNC_KEY]: tabTitles }, () => {
       utilExtension.sendMessage({
         action: EXTENSION_ACTION.CHANGE_TITLE,
         payload: tabTitles,
@@ -36,8 +34,6 @@ function App() {
   }, [tabTitles]);
 
   const handleFormSubmit = ({ url, title }: { url: string, title: string }) => {
-    console.log({ url, title })
-
     const id = uuidv4();
     const tabTitle: TabTitle = {
       id,

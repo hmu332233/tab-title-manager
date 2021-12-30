@@ -1,5 +1,4 @@
-console.log('content script loaded!');
-import { EXTENSION_ACTION } from '../shared/constants';
+import { EXTENSION_ACTION, SYNC_KEY } from '../shared/constants';
 
 chrome.runtime.onMessage.addListener(message => {
   console.log(message)
@@ -7,21 +6,24 @@ chrome.runtime.onMessage.addListener(message => {
   switch (action) {
     case EXTENSION_ACTION.CHANGE_TITLE:
       const { payload: tabTitles } = message;
-      const { hostname } = window.location;
-      
-      const tabTitle = tabTitles.find(({ url }) => url === hostname);
-      const { title } = tabTitle;
-      document.title = title;
+      changeTitle(tabTitles);
     break;
   }
 });
 
+chrome.storage.sync.get(SYNC_KEY, (result) => {
+  const tabTitles = result[SYNC_KEY];
+  if (!tabTitles) {
+     return;
+  }
+  changeTitle(tabTitles);
+});
 
 
-// chrome.storage.sync.set({key: value}, function() {
-//   console.log('Value is set to ' + value);
-// });
-
-// chrome.storage.sync.get(['key'], function(result) {
-//   console.log('Value currently is ' + result.key);
-// });
+function changeTitle(tabTitles: any) {
+  const { hostname } = window.location;
+      
+  const tabTitle = tabTitles.find(({ url }) => url === hostname);
+  const { title } = tabTitle;
+  document.title = title;
+}
