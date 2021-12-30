@@ -20,9 +20,9 @@ chrome.storage.sync.get(SYNC_KEY, (result) => {
 
 
 function changeTitle(tabTitles: any) {
-  const { hostname } = window.location;
-      
-  const tabTitle = tabTitles.find(({ url }) => url === hostname);
+  const { origin, pathname } = window.location;
+  const siteUrl = `${origin}${pathname}`;
+  const tabTitle = tabTitles.find(({ url }) => url === siteUrl);
   const { title } = tabTitle;
   document.title = title;
 }

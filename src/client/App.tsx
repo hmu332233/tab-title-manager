@@ -43,7 +43,10 @@ function App() {
 
     setTabTitles(prev => [...prev, tabTitle]);
   }
-  const handleDeleteItemClick = (id: string) => console.log(id);
+  const handleDeleteItemClick = (id: string) => {
+    const filtered = tabTitles.filter(tabTitle => tabTitle.id !== id);
+    setTabTitles(filtered);
+  };
   return (
     <>   
       <Header />

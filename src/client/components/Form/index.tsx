@@ -2,10 +2,12 @@ import React from 'react';
 
 type Props = {
   onSubmit: ({ url, title }: { url: string, title: string }) => void,
+  onUrlButtonClick: () => void,
 };
 
 function Form({
   onSubmit,
+  onUrlButtonClick,
 }: Props) {
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -35,17 +37,18 @@ function Form({
     <section className="section is-flex-direction-column is-max-desktop">
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">URL</label>
-          <div className="control">
-            <input className="input" type="text" name="url" placeholder="https://naver.com/learn/my" />
-          </div>
-        </div>
-        <div className="field">
           <label className="label">Title</label>
           <div className="control">
             <input className="input" type="text" name="title" placeholder="제목" />
           </div>
         </div>
+        <div className="field mb-4">
+          <label className="label">URL</label>
+          <div className="control">
+            <input className="input" type="text" name="url" placeholder="https://naver.com/learn/my" />
+          </div>
+        </div>
+        <button className="button is-primary is-fullwidth is-outlined mb-2" type="button" onClick={onUrlButtonClick}>현재 페이지 URL 가져오기</button>
         <button className="button is-primary is-fullwidth" type="submit">추가</button>
       </form>
     </section>
