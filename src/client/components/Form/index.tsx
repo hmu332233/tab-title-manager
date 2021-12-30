@@ -13,12 +13,23 @@ function Form({
     const formElement = event.target as HTMLFormElement;
     const formData = new FormData(formElement);
     const { url, title } = Object.fromEntries(formData);
-    onSubmit({
-      url: url as string,
-      title: title as string,
-    });
 
-    formElement.reset();
+    try {
+      const { origin, pathname } = new URL(url as string);
+
+      onSubmit({
+        url: `${origin}${pathname}`,
+        title: title as string,
+      });
+
+      formElement.reset();
+    } catch (err) {
+      if (err.name === 'TypeError') {
+        // TODO: alert 대신 message 컴포넌트 형식으로 변경하기
+        alert('URL 형식이 잘 못 되었습니다.\nhttps://naver.com/learn/my와 같은 형식으로 적어주세요.');
+      }
+    }
+
   };
   return (
     <section className="section is-flex-direction-column is-max-desktop">
