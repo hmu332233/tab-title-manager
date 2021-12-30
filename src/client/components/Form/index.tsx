@@ -37,6 +37,7 @@ function Form({
   };
 
   const handleUrlButtonClick = () => {
+    // NOTE: uncontrolled form 관점에서 데이터를 전달하여 form을 갱신하기 위한 다른 방법을 찾아보기
     onUrlButtonClick(({ url, title }) => {
       titleInputRef.current && (titleInputRef.current.value = title);
       urlInputRef.current && (urlInputRef.current.value = url);

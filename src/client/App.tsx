@@ -50,15 +50,13 @@ function App() {
   };
 
   const handleUrlButtonClick = (callback: ({ url, title }: { url: string, title: string }) => void) => {
-    // utilExtension.sendMessage({
-    //   action: EXTENSION_ACTION.CHANGE_TITLE,
-    //   payload: tabTitles,
-    // });
-
-    callback({
-      url: 'https://naver.com',
-      title: '테스트입니다'
-    })
+    utilExtension.sendMessage({
+      action: EXTENSION_ACTION.GET_SITE_INFO,
+      payload: tabTitles,
+      responseCallback: ({ url, title }) => {
+        callback({ url, title }); // NOTE: uncontrolled form 관점에서 데이터를 전달하여 form을 갱신하기 위한 다른 방법을 찾아보기
+      },
+    });
   };
 
   return (

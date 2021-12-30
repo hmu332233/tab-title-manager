@@ -7,6 +7,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const { payload: tabTitles } = message;
       changeTitle(tabTitles);
     break;
+    case EXTENSION_ACTION.GET_SITE_INFO:
+      const title = window.document.title;
+      const { origin, pathname } = window.location;
+      sendResponse({
+        url: `${origin}${pathname}`,
+        title,
+      });
+    break;
   }
 });
 
