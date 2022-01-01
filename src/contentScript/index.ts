@@ -23,7 +23,7 @@ chrome.storage.sync.get(SYNC_KEY, (result) => {
   if (!tabTitles) {
      return;
   }
-  changeTitle(tabTitles);
+  setTimeout(() => changeTitle(tabTitles), 500);
 });
 
 
