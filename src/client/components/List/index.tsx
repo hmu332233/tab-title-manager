@@ -12,10 +12,13 @@ function ListItem({
   const handleDeleteClick = () => onDeleteClick(id);
   return (
     <div className="panel-block">
-      <span className="panel-icon">
+      {/* <span className="panel-icon">
         <i className="fas fa-book" aria-hidden="true" />
-      </span>
-      <b>{title}</b> - {url}
+      </span> */}
+      <div className="is-flex is-flex-direction-column" style={{ wordBreak: 'break-all' }}>
+        <b>{title}</b>
+        {url}
+      </div>
       <button className="delete ml-auto" onClick={handleDeleteClick} />
     </div>
   );
