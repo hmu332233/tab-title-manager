@@ -6,7 +6,7 @@
   "description": "탭의 제목을 자유롭게 변경할 수 있습니다. 한번 변경한 탭 제목은 브라우저를 닫았다가 열어도 유지되며 이를 관리할 수 있습니다.",
   
   "sidebar_action": {
-    "default_page": "dist/index.html",
+    "default_page": "client/index.html",
     "default_icon": {
         "16": "icon.png"
     },
@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": ["https://*/*"],
-      "js": ["dist/index.js"]
+      "js": ["contentScript/index.js"]
     }
   ],
   "permissions": ["activeTab", "storage"]
