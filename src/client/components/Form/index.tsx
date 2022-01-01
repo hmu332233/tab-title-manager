@@ -59,8 +59,8 @@ function Form({
             <input className="input" type="text" name="url" placeholder="https://naver.com/learn/my" ref={urlInputRef} />
           </div>
         </div>
-        <button className="button is-primary is-fullwidth is-outlined mb-2" type="button" onClick={handleUrlButtonClick}>현재 페이지 URL 가져오기</button>
-        <button className="button is-primary is-fullwidth" type="submit">추가</button>
+        <button className="button is-primary is-fullwidth is-outlined mb-2" type="button" onClick={handleUrlButtonClick}>현재 페이지 정보 불러오기</button>
+        <button className="button is-primary is-fullwidth" type="submit">변경하기</button>
       </form>
     </section>
   );
